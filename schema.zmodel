@@ -1,0 +1,25 @@
+// This is a sample model to get you started.
+
+/**
+ * A sample data source using local sqlite db.
+ */
+datasource db {
+    provider = 'sqlite'
+    url = 'file:./dev.db'
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+plugin hooks {
+    provider = '@zenstackhq/tanstack-query'
+    output = "./src/lib/hooks"
+    target = "vue" //doesn't work
+    // target = "react" //works
+}
+
+model File {
+    id Int @id @default(autoincrement())
+    name String
+}
